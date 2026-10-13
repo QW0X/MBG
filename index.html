@@ -3,38 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Мой безопасный город</title>
+<meta name="theme-color" content="#f3f6f8">
+<title>Мой безопасный город — Москва</title>
 <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
-<script src="https://api-maps.yandex.ru/v3/?apikey=YOUR_YANDEX_API_KEY&lang=ru_RU"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app">
 <header>
-  <div><b>МОЙ БЕЗОПАСНЫЙ ГОРОД</b><h1>Знай свой район.<br>Выбирай безопасный маршрут.</h1></div>
+  <div><b>МОЙ БЕЗОПАСНЫЙ ГОРОД · МОСКВА</b><h1>Знай свой район.<br>Выбирай безопасный маршрут.</h1></div>
   <span class="shield">🛡</span>
 </header>
-<section class="map"><div id="map"></div><div id="demo">
-  <div class="road a"></div><div class="road b"></div>
-  <div class="risk red">АКТУАЛЬНЫЙ ФАКТОР РИСКА</div>
-  <div class="risk orange">ПОВЫШЕННЫЙ РИСК</div><div class="you">●<small>Вы</small></div>
-  <span class="demoText">ДЕМО-РЕЖИМ: добавьте ключ Яндекс Карт</span>
-</div>
-<div class="legend">🟢 безопасно &nbsp; 🟠 повышенный риск &nbsp; 🔴 актуальный фактор риска</div></section>
+<section class="map"><div id="map" aria-label="Карта Москвы"></div><div id="mapStatus" class="mapStatus">Загружаем карту Москвы…</div>
+<div class="legend">🗺 Реальная карта &nbsp; · &nbsp; Метки риска появятся после подключения проверенных данных</div></section>
 <section class="stats">
- <div><small>Индекс среды</small><strong>82</strong><em>Благоприятно</em></div>
- <div><small>PM2.5</small><strong>12</strong><em>Норма</em></div>
- <div><small>Обстановка</small><strong>Стабильно</strong><em>обновляется</em></div>
+ <div><small>Город</small><strong>Москва</strong><em>карта улиц</em></div>
+ <div><small>Карта</small><strong>OpenStreetMap</strong><em>онлайн</em></div>
+ <div><small>Риски</small><strong>Не подключены</strong><em>нужны источники данных</em></div>
 </section>
 <section class="buttons">
-<button class="primary" id="route">🛡 <span><b>Безопасный маршрут</b><small>Среда + освещение + оперативная обстановка</small></span></button>
-<button id="location">📍 <span><b>Моё местоположение</b><small>Показать текущую точку</small></span></button>
-<button id="report">⚠️ <span><b>Сообщить о проблеме</b><small>Участок, инфраструктура или другая проблема</small></span></button>
+<button class="primary" id="route">🛡 <span><b>Безопасный маршрут</b><small>Следующий этап — расчёт и оценка рисков</small></span></button>
+<button id="location">📍 <span><b>Моё местоположение</b><small>Показать точку на карте с разрешения</small></span></button>
+<button id="report">⚠️ <span><b>Сообщить о проблеме</b><small>Форма отправки будет подключена отдельно</small></span></button>
 </section>
-<section class="panel"><b>Оперативная безопасность</b>
-<p>🟢 Обычная обстановка</p><p>🟠 Повышенный риск — рекомендуется альтернативный маршрут</p><p>🔴 Актуальный фактор риска — участок рекомендуется временно обходить</p>
-<small>В прототипе данные демонстрационные. В рабочей версии используются проверенные источники.</small></section>
-<nav><button>🗺<small>Карта</small></button><button id="navRoute">🛡<small>Маршрут</small></button><button>◉<small>Обстановка</small></button><button id="navReport">⚠<small>Сообщить</small></button></nav>
+<section class="panel"><b>О карте</b>
+<p>🗺 Карта показывает реальные улицы и места Москвы.</p><p>📍 Местоположение отображается только после разрешения пользователя.</p><p>⚠️ Цветные зоны опасности пока не отображаются: для них нужны проверенные актуальные данные.</p>
+<small>Картографические данные © OpenStreetMap contributors.</small></section>
+<nav><button id="navMap">🗺<small>Карта</small></button><button id="navRoute">🛡<small>Маршрут</small></button><button id="navInfo">◉<small>Обстановка</small></button><button id="navReport">⚠<small>Сообщить</small></button></nav>
 </div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="app.js"></script>
 </body></html>
