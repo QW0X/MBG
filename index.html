@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Мой безопасный город</title>
+<script src="https://telegram.org/js/telegram-web-app.js?63"></script>
+<script src="https://api-maps.yandex.ru/v3/?apikey=YOUR_YANDEX_API_KEY&lang=ru_RU"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<header>
+  <div><b>МОЙ БЕЗОПАСНЫЙ ГОРОД</b><h1>Знай свой район.<br>Выбирай безопасный маршрут.</h1></div>
+  <span class="shield">🛡</span>
+</header>
+<section class="map"><div id="map"></div><div id="demo">
+  <div class="road a"></div><div class="road b"></div>
+  <div class="risk red">АКТУАЛЬНЫЙ ФАКТОР РИСКА</div>
+  <div class="risk orange">ПОВЫШЕННЫЙ РИСК</div><div class="you">●<small>Вы</small></div>
+  <span class="demoText">ДЕМО-РЕЖИМ: добавьте ключ Яндекс Карт</span>
+</div>
+<div class="legend">🟢 безопасно &nbsp; 🟠 повышенный риск &nbsp; 🔴 актуальный фактор риска</div></section>
+<section class="stats">
+ <div><small>Индекс среды</small><strong>82</strong><em>Благоприятно</em></div>
+ <div><small>PM2.5</small><strong>12</strong><em>Норма</em></div>
+ <div><small>Обстановка</small><strong>Стабильно</strong><em>обновляется</em></div>
+</section>
+<section class="buttons">
+<button class="primary" id="route">🛡 <span><b>Безопасный маршрут</b><small>Среда + освещение + оперативная обстановка</small></span></button>
+<button id="location">📍 <span><b>Моё местоположение</b><small>Показать текущую точку</small></span></button>
+<button id="report">⚠️ <span><b>Сообщить о проблеме</b><small>Участок, инфраструктура или другая проблема</small></span></button>
+</section>
+<section class="panel"><b>Оперативная безопасность</b>
+<p>🟢 Обычная обстановка</p><p>🟠 Повышенный риск — рекомендуется альтернативный маршрут</p><p>🔴 Актуальный фактор риска — участок рекомендуется временно обходить</p>
+<small>В прототипе данные демонстрационные. В рабочей версии используются проверенные источники.</small></section>
+<nav><button>🗺<small>Карта</small></button><button id="navRoute">🛡<small>Маршрут</small></button><button>◉<small>Обстановка</small></button><button id="navReport">⚠<small>Сообщить</small></button></nav>
+</div>
+<script src="app.js"></script>
+</body></html>
