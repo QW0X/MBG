@@ -4,10 +4,11 @@
 :root {
   --accent: #1769e0;
   --accent-dark: #1254b8;
-  --surface: #ffffff;
-  --page-bg: #f1f5fb;
-  --text-main: #172b4d;
-  --border-soft: #e1e8f2;
+  --surface: var(--tg-theme-secondary-bg-color, #ffffff);
+  --page-bg: var(--tg-theme-bg-color, #f1f5fb);
+  --text-main: var(--tg-theme-text-color, #172b4d);
+  --text-muted: var(--tg-theme-hint-color, #718096);
+  --border-soft: var(--tg-theme-hint-color, #e1e8f2);
 }
 
 body {
