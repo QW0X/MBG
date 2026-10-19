@@ -112,27 +112,24 @@ const description = prompt('Добавь описание точки:') || 'Оп
         cursor: pointer;
       `;
 
-      markerElement.onclick = () => {
+    markerElement.onclick = () => {
   pop(
     name + ' — ' + selectedCategory.name,
     description + ' Координаты: ' +
       coordinates[0].toFixed(5) + ', ' +
       coordinates[1].toFixed(5)
   );
+};
 
-      map.addChild(
-        new ymaps3.YMapMarker(
-          { coordinates },
-          markerElement
-        )
-      );
-
-      addingPoint = false;
-      addPointButton.textContent = '📍 Добавить точку';
-    }
+map.addChild(
+  new ymaps3.YMapMarker(
+    { coordinates },
+    markerElement
+  )
 );
-    
-    
+
+addingPoint = false;
+addPointButton.textContent = '📍 Добавить точку';
 // Демонстрационные экологические зоны.
 // Это НЕ реальные измерения загрязнения.
 const demoZones = [
