@@ -6,7 +6,8 @@
 <meta name="theme-color" content="#f3f6f8">
 <title>Мой безопасный город — Москва</title>
 <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<!-- ВСТАВЬ СВОЙ API-КЛЮЧ ВМЕСТО YOUR_API_KEY -->
+<script src="https://api-maps.yandex.ru/v3/?apikey=03598b5c-6d9a-422d-a6e0-c488df1eab56&lang=ru_RU"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,11 +16,11 @@
   <div><b>МОЙ БЕЗОПАСНЫЙ ГОРОД · МОСКВА</b><h1>Знай свой район.<br>Выбирай безопасный маршрут.</h1></div>
   <span class="shield">🛡</span>
 </header>
-<section class="map"><div id="map" aria-label="Карта Москвы"></div><div id="mapStatus" class="mapStatus">Загружаем карту Москвы…</div>
-<div class="legend">🗺 Реальная карта &nbsp; · &nbsp; Метки риска появятся после подключения проверенных данных</div></section>
+<section class="map"><div id="map" aria-label="Карта Москвы"></div><div id="mapStatus" class="mapStatus">Загружаем Яндекс Карту Москвы…</div>
+<div class="legend">🗺 Яндекс Карты · Москва &nbsp; · &nbsp; Зоны риска появятся после подключения проверенных данных</div></section>
 <section class="stats">
  <div><small>Город</small><strong>Москва</strong><em>карта улиц</em></div>
- <div><small>Карта</small><strong>OpenStreetMap</strong><em>онлайн</em></div>
+ <div><small>Карта</small><strong>Яндекс</strong><em>онлайн</em></div>
  <div><small>Риски</small><strong>Не подключены</strong><em>нужны источники данных</em></div>
 </section>
 <section class="buttons">
@@ -28,10 +29,9 @@
 <button id="report">⚠️ <span><b>Сообщить о проблеме</b><small>Форма отправки будет подключена отдельно</small></span></button>
 </section>
 <section class="panel"><b>О карте</b>
-<p>🗺 Карта показывает реальные улицы и места Москвы.</p><p>📍 Местоположение отображается только после разрешения пользователя.</p><p>⚠️ Цветные зоны опасности пока не отображаются: для них нужны проверенные актуальные данные.</p>
-<small>Картографические данные © OpenStreetMap contributors.</small></section>
+<p>🗺 Карта показывает реальные улицы и места Москвы.</p><p>📍 Местоположение отображается после разрешения пользователя.</p><p>⚠️ Цветные зоны опасности пока не отображаются: для них нужны проверенные актуальные данные.</p>
+<small>Картографический сервис: Яндекс Карты.</small></section>
 <nav><button id="navMap">🗺<small>Карта</small></button><button id="navRoute">🛡<small>Маршрут</small></button><button id="navInfo">◉<small>Обстановка</small></button><button id="navReport">⚠<small>Сообщить</small></button></nav>
 </div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="app.js"></script>
 </body></html>
