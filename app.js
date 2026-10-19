@@ -60,6 +60,49 @@ addPointButton.onclick = () => {
     ? '✖ Отменить добавление'
     : '📍 Добавить точку';
 };
+map.addChild(
+  new ymaps3.YMapListener({
+    onClick: (object, event) => {
+      if (!addingPoint) return;
+
+      const coordinates = event.coordinates;
+      if (!coordinates) return;
+
+      const name = prompt('Название новой точки:');
+      if (!name) return;
+
+      const markerElement = document.createElement('button');
+      markerElement.type = 'button';
+      markerElement.title = name;
+      markerElement.style.cssText = `
+        width: 24px;
+        height: 24px;
+        border: 3px solid white;
+        border-radius: 50%;
+        background: #2563eb;
+        box-shadow: 0 2px 8px #0005;
+        cursor: pointer;
+      `;
+
+      markerElement.onclick = () => {
+        pop(name, 'Пользовательская точка. Координаты: ' +
+          coordinates[0].toFixed(5) + ', ' +
+          coordinates[1].toFixed(5));
+      };
+
+      map.addChild(
+        new ymaps3.YMapMarker(
+          { coordinates },
+          markerElement
+        )
+      );
+
+      addingPoint = false;
+      addPointButton.textContent = '📍 Добавить точку';
+    }
+  })
+);
+    
     
 // Демонстрационные экологические зоны.
 // Это НЕ реальные измерения загрязнения.
