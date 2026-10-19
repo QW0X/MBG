@@ -20,11 +20,11 @@ async function initMap() {
   try {
     if (!window.ymaps3) throw new Error('Не загрузился JavaScript API Яндекс Карт. Проверь ключ и интернет.');
     await ymaps3.ready;
-    const {
+  const {
   YMap,
   YMapDefaultSchemeLayer,
-  YMapMarker,
-  YMapFeature
+  YMapDefaultFeaturesLayer,
+  YMapMarker
 } = ymaps3;
 
 map = new YMap(document.getElementById('map'), {
@@ -32,6 +32,7 @@ map = new YMap(document.getElementById('map'), {
 });
 
 map.addChild(new YMapDefaultSchemeLayer({}));
+map.addChild(new YMapDefaultFeaturesLayer({}));
 
 // Демонстрационные экологические зоны.
 // Это НЕ реальные измерения загрязнения.
