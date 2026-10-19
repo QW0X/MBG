@@ -130,7 +130,7 @@ const description = prompt('Добавь описание точки:') || 'Оп
       addingPoint = false;
       addPointButton.textContent = '📍 Добавить точку';
     }
-  })
+  }
 );
     
     
