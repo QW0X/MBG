@@ -46,7 +46,7 @@ addPointButton.style.cssText = `
   padding: 12px 16px;
   border: none;
   border-radius: 12px;
-  background: ${selectedCategory.color};
+  background: #2563eb;
   color: white;
   font-size: 15px;
   cursor: pointer;
@@ -129,7 +129,10 @@ map.addChild(
 );
 
 addingPoint = false;
-addPointButton.textContent = '📍 Добавить точку';
+addPointButton.textContent = '📍 Добавить точку';    
+    }
+  })
+);
 // Демонстрационные экологические зоны.
 // Это НЕ реальные измерения загрязнения.
 const demoZones = [
