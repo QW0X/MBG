@@ -46,7 +46,7 @@ addPointButton.style.cssText = `
   padding: 12px 16px;
   border: none;
   border-radius: 12px;
-  background: #2563eb;
+  background: ${selectedCategory.color};
   color: white;
   font-size: 15px;
   cursor: pointer;
@@ -98,6 +98,10 @@ const description = prompt('Добавь описание точки:') || 'Оп
       const markerElement = document.createElement('button');
       markerElement.type = 'button';
       markerElement.title = name;
+      markerElement.setAttribute(
+  'aria-label',
+  `${name} — ${selectedCategory.name}`
+);
       markerElement.style.cssText = `
         width: 24px;
         height: 24px;
