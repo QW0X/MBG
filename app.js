@@ -52,7 +52,8 @@ addPointButton.style.cssText = `
   cursor: pointer;
 `;
 
-document.getElementById('map').appendChild(addPointButton);
+document.body.appendChild(addPointButton);
+addPointButton.style.position = 'fixed';
 
 addPointButton.onclick = () => {
   addingPoint = !addingPoint;
