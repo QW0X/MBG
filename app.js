@@ -33,7 +33,34 @@ map = new YMap(document.getElementById('map'), {
 
 map.addChild(new YMapDefaultSchemeLayer({}));
 map.addChild(new YMapDefaultFeaturesLayer({}));
+// Режим добавления пользовательских точек
+let addingPoint = false;
 
+const addPointButton = document.createElement('button');
+addPointButton.textContent = '📍 Добавить точку';
+addPointButton.style.cssText = `
+  position: absolute;
+  top: 80px;
+  left: 12px;
+  z-index: 1000;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+`;
+
+document.getElementById('map').appendChild(addPointButton);
+
+addPointButton.onclick = () => {
+  addingPoint = !addingPoint;
+  addPointButton.textContent = addingPoint
+    ? '✖ Отменить добавление'
+    : '📍 Добавить точку';
+};
+    
 // Демонстрационные экологические зоны.
 // Это НЕ реальные измерения загрязнения.
 const demoZones = [
