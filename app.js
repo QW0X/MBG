@@ -107,16 +107,18 @@ const description = prompt('Добавь описание точки:') || 'Оп
         height: 24px;
         border: 3px solid white;
         border-radius: 50%;
-        background: #2563eb;
+        background: ${selectedCategory.color};
         box-shadow: 0 2px 8px #0005;
         cursor: pointer;
       `;
 
       markerElement.onclick = () => {
-        pop(name, 'Пользовательская точка. Координаты: ' +
-          coordinates[0].toFixed(5) + ', ' +
-          coordinates[1].toFixed(5));
-      };
+  pop(
+    name + ' — ' + selectedCategory.name,
+    description + ' Координаты: ' +
+      coordinates[0].toFixed(5) + ', ' +
+      coordinates[1].toFixed(5)
+  );
 
       map.addChild(
         new ymaps3.YMapMarker(
