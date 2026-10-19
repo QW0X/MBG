@@ -70,7 +70,30 @@ map.addChild(
       if (!coordinates) return;
 
       const name = prompt('Название новой точки:');
-      if (!name) return;
+if (!name) return;
+
+const category = prompt(
+  'Выбери категорию, введя номер:\n' +
+  '1 — Благоприятная зона\n' +
+  '2 — Повышенный шум\n' +
+  '3 — Экологическая проблема\n' +
+  '4 — Потенциально опасный участок'
+);
+
+const categories = {
+  '1': { name: 'Благоприятная зона', color: '#22c55e' },
+  '2': { name: 'Повышенный шум', color: '#f59e0b' },
+  '3': { name: 'Экологическая проблема', color: '#ef4444' },
+  '4': { name: 'Потенциально опасный участок', color: '#7c3aed' }
+};
+
+const selectedCategory = categories[category];
+if (!selectedCategory) {
+  alert('Введи число от 1 до 4.');
+  return;
+}
+
+const description = prompt('Добавь описание точки:') || 'Описание не указано.';
 
       const markerElement = document.createElement('button');
       markerElement.type = 'button';
