@@ -20,11 +20,68 @@ async function initMap() {
   try {
     if (!window.ymaps3) throw new Error('Не загрузился JavaScript API Яндекс Карт. Проверь ключ и интернет.');
     await ymaps3.ready;
-    const { YMap, YMapDefaultSchemeLayer, YMapMarker } = ymaps3;
-    map = new YMap(document.getElementById('map'), {
-      location: { center: MOSCOW_CENTER, zoom: 11 }
-    });
-    map.addChild(new YMapDefaultSchemeLayer({}));
+    const {
+  YMap,
+  YMapDefaultSchemeLayer,
+  YMapMarker,
+  YMapFeature
+} = ymaps3;
+
+map = new YMap(document.getElementById('map'), {
+  location: { center: MOSCOW_CENTER, zoom: 11 }
+});
+
+map.addChild(new YMapDefaultSchemeLayer({}));
+
+// Демонстрационные экологические зоны.
+// Это НЕ реальные измерения загрязнения.
+const demoZones = [
+  {
+    name: 'Пример благоприятной зоны',
+    coordinates: [37.62, 55.75],
+    color: '#22a06b'
+  },
+  {
+    name: 'Пример зоны для проверки',
+    coordinates: [37.66, 55.76],
+    color: '#e99b25'
+  },
+  {
+    name: 'Тестовая точка экологического внимания',
+    coordinates: [37.59, 55.74],
+    color: '#d94b4b'
+  }
+];
+
+demoZones.forEach(zone => {
+  const markerElement = document.createElement('button');
+  markerElement.type = 'button';
+  markerElement.title = zone.name;
+  markerElement.setAttribute('aria-label', zone.name);
+  markerElement.style.cssText = `
+    width: 24px;
+    height: 24px;
+    border: 3px solid white;
+    border-radius: 50%;
+    background: ${zone.color};
+    box-shadow: 0 2px 8px #0005;
+    cursor: pointer;
+  `;
+
+  markerElement.onclick = () => {
+    pop(
+      zone.name,
+      'Демонстрационная метка. Достоверные экологические данные для этой точки пока не подключены.'
+    );
+  };
+
+  const marker = new YMapMarker(
+    { coordinates: zone.coordinates },
+    markerElement
+  );
+
+  map.addChild(marker);
+});
     setStatus('Москва · Яндекс Карты загружены');
     setTimeout(() => mapStatus.classList.add('hidden'), 3000);
     // Keep the marker constructor available for the location button if supported by this API build.
